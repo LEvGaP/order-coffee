@@ -1,4 +1,5 @@
 .beverage {
+    position: relative;
     border: 1px solid #eee;
     margin: 15px 0;
     padding: 15px;
@@ -43,5 +44,26 @@
     padding: 7px 15px;
     border: 2px solid orange;
     border-radius: 5px;
+}
+
+.remove-button {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+}
+
+.accepted-modal {
+    width: 500px;
+    position: relative;
+}
+
+.accepted-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.accepted-modal .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
