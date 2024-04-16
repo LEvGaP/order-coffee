@@ -23,11 +23,21 @@ function addCardDeleteButtonListener(card){
         );
 }
 
+function addTextAreaFlushEvent(card){
+    card
+        .querySelector('textarea')
+        .addEventListener('input', (e) => {
+            card.querySelector('.echo-output').textContent = e.target.value;
+        });
+}
+
+
 document
     .querySelector('.add-button')
     .addEventListener('click', () => addBeverageCard());
 
 
+addTextAreaFlushEvent(document.querySelector('.beverage'));
 addCardDeleteButtonListener(document.querySelector('.beverage'));
 restoreBeverageCardNumeration();
 
@@ -36,6 +46,7 @@ function addBeverageCard() {
     const newCard = document.querySelector('.beverage').cloneNode(deep=true);
     setRadioInputNameFor(newCard, 'abra kadabra');
     addCardDeleteButtonListener(newCard);
+    addTextAreaFlushEvent(newCard);
     const form = document.querySelector('form');
     form.insertBefore(newCard, form.children[form.childElementCount-2]);
     restoreBeverageCardNumeration();
