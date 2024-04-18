@@ -72,7 +72,6 @@ function setRadioInputNameFor(card, name){
     card.querySelectorAll("input[type='radio']")
         .forEach((el) => el.setAttribute('name', name));
 }
-}
 
 function setOrderData(modal) {
     const beverages = document.querySelectorAll('form .beverage');
