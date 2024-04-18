@@ -9,6 +9,7 @@
     <form>
       <fieldset class="beverage">
         <h4 class="beverage-count">Напиток №1</h4>
+        <button type="button" class="remove-button">X</button>
         <label class="field">
           <span class="label-text">Я буду</span>
           <select>
@@ -55,6 +56,16 @@
             <span>корицу</span>
           </label>
         </div>
+        
+        <div class="field">
+          <label class="textarea-field">
+            <span>И еще вот что</span>
+            <br>
+            <textarea rows="7" cols="45"></textarea>
+            <p class="echo-output"></p>
+          </label>
+        </div>
+        
       </fieldset>
       <div>
         <button type="button" class="add-button">+ Добавить напиток</button>
@@ -63,6 +74,21 @@
         <button type="submit" class="submit-button">Готово</button>
       </div>
     </form>
+    <dialog class="accepted-modal">
+      <p>Заказ принят!</p>
+      <p class="beverages-count"></p>
+      <button class="close">X</button>
+      <table class="order-details">
+        <thead>
+          <tr>
+            <th scope="col">Напиток</th>
+            <th scope="col">Молоко</th>
+            <th scope="col">Дополнительно</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </dialog>
 
     <script src="index.js"></script>
   </body>
