@@ -67,3 +67,15 @@
     right: 10px;
 }
 
+.order-details td, th {
+    border: 1px solid;
+    padding: 6px 13px;
+}
+
+.order-details {
+    border-collapse: collapse;
+}
+
+.order-details tbody tr:nth-child(even) {
+    background: #f0f0f2;
+}
