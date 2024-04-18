@@ -10,15 +10,68 @@ submitButton.addEventListener('click', (event) => {
 const closeModalButton = document.querySelector('.accepted-modal .close');
 closeModalButton.addEventListener('click', () => acceptedModal.close());
 
+
+function addCardDeleteButtonListener(card){
+    card
+        .querySelector('.remove-button')
+        .addEventListener('click', (e) => {
+                if (document.querySelectorAll('.beverage').length <= 1){
+                    return;
+                }
+                e.target.closest('.beverage').remove();
+                restoreBeverageCardNumeration();
+            }
+        );
+}
+
+function addTextAreaFlushEvent(card){
+    card
+        .querySelector('textarea')
+        .addEventListener('input', (e) => {
+            card.querySelector('.echo-output').textContent = e.target.value;
+        });
+}
+
+
 document
     .querySelector('.add-button')
     .addEventListener('click', () => addBeverageCard());
 
 
+addTextAreaFlushEvent(document.querySelector('.beverage'));
+addCardDeleteButtonListener(document.querySelector('.beverage'));
+restoreBeverageCardNumeration();
+
+
 function addBeverageCard() {
     const newCard = document.querySelector('.beverage').cloneNode(deep=true);
+    setRadioInputNameFor(newCard, 'abra kadabra');
+    addCardDeleteButtonListener(newCard);
+    addTextAreaFlushEvent(newCard);
     const form = document.querySelector('form');
     form.insertBefore(newCard, form.children[form.childElementCount-2]);
+    restoreBeverageCardNumeration();
+}
+
+
+function restoreBeverageCardNumeration() {
+    let nextNumber = 1;
+    document
+        .querySelectorAll('.beverage')
+        .forEach(
+            (el) => {
+                el.querySelector('.beverage-count').textContent = `Напиток №${nextNumber}`;
+                setRadioInputNameFor(el, `milkForBeverage${nextNumber}`);
+                nextNumber++;
+            }
+        );
+}
+
+
+function setRadioInputNameFor(card, name){
+    card.querySelectorAll("input[type='radio']")
+        .forEach((el) => el.setAttribute('name', name));
+}
 }
 
 function setOrderData(modal) {
